@@ -1,0 +1,21 @@
+name: "my oficial webapp github actions"
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches: 
+      - main
+      - develop
+  workflow_dispatch:
+jobs:
+  Build:
+    name: "build job"
+    runs-on: windows-latest
+    steps:
+      - name: "checkout step"
+        uses: actions/checkout@v4
+      - name: "run an inline script"
+        run: |
+          Write-Host "this is the first time i want to test this code"
