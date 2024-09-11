@@ -76,13 +76,3 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: drop
-  Deploy_To_Stage:
-    needs: Build
-    name: Deploying To Webapp Service
-    runs-on: windows-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: drop
-          
