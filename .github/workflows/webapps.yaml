@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
            name: drop
-           path: "$env:DOTNET_ROOT/SimpleWebAppMVC"
+           path: "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
       - name: End of Build stage
         run: |
           Write-Host "Artifact created"
