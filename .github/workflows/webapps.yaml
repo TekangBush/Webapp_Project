@@ -10,7 +10,7 @@ on:
       - develop
   workflow_dispatch:
 env:
-  DOTNET_ROOT: "$env:GITHUB_WORKSPACE"
+  DOTNET_ROOT: "."
 jobs:
   Build:
     name: "build job"
@@ -49,16 +49,16 @@ jobs:
           dir "$env:GITHUB_WORKSPACE"
       - name: Publish build artifact
         run: |
-           dotnet publish $ENV:GITHUB_WORKSPACE -c Debug -o "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
+           dotnet publish $ENV:GITHUB_WORKSPACE -c Debug -o "$ENV:GITHUB_WORKSPACE/SimpleWebAppMVC"
       - name: List published files
         run: |
-          Write-Host "Listing files in ${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
-          dir "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
+          Write-Host "Listing files in $ENV:GITHUB_WORKSPACE/SimpleWebAppMVC"
+          dir "$ENV:GITHUB_WORKSPACE/SimpleWebAppMVC"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
            name: drop
-           path: "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
+           path: "$ENV:GITHUB_WORKSPACE/SimpleWebAppMVC"
       - name: End of Build stage
         run: |
           Write-Host "Artifact created"
