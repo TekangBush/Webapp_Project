@@ -21,31 +21,34 @@ jobs:
       - name: "run an inline script"
         run: |
           Write-Host "setting up the environment now"
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 7.0.x
-      - name: Restore dependencies 
-        run: dotnet restore
-      - name: Build step"
-        run: dotnet build --configuration Debug
-      - name: Get what this ENV.DOTNET_ROOT
+      - name: "Who is the github actor?"
         run: |
-          Write-Host "DOTNET_ROOT is $env:DOTNET_ROOT"
-      - name: Publish build artifact
-        run: |
-           dotnet publish SimpleWebAppMVC/SimpleWebAppMVC.csproj -c Debug -o "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
-      - name: List published files
-        run: |
-          Write-Host "Listing files in ${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
-          dir "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-           name: drop
-           path: "$env:DOTNET_ROOT/SimpleWebAppMVC"
-      - name: End of Build stage
-        run: |
-          Write-Host "Artifact created"
+          Write-Host "GITHUB_ACTOR IS : $env:GITHUB_ACTOR"
+      # - name: Setup .NET
+      #   uses: actions/setup-dotnet@v4
+      #   with:
+      #     dotnet-version: 7.0.x
+      # - name: Restore dependencies 
+      #   run: dotnet restore
+      # - name: Build step"
+      #   run: dotnet build --configuration Debug
+      # - name: Get what this ENV.DOTNET_ROOT
+      #   run: |
+      #     Write-Host "DOTNET_ROOT is $env:DOTNET_ROOT"
+      # - name: Publish build artifact
+      #   run: |
+      #      dotnet publish SimpleWebAppMVC/SimpleWebAppMVC.csproj -c Debug -o "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
+      # - name: List published files
+      #   run: |
+      #     Write-Host "Listing files in ${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
+      #     dir "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
+      # - name: Upload artifacts
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #      name: drop
+      #      path: "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
+      # - name: End of Build stage
+      #   run: |
+      #     Write-Host "Artifact created"
 
           
