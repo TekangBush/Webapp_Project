@@ -58,8 +58,8 @@ jobs:
           Write-Host "Listing files in ${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
           dir "$env:GITHUB_WORKSPACE/SimpleWebAppMVC"
       - name: Upload artifacts
-        id: output_artifact
         uses: actions/upload-artifact@v4
+        id: output_artifact
         with:
            name: drop
            path: "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
@@ -68,7 +68,7 @@ jobs:
         run: |
           Write-Host "Artifact created"
   Deploy:
-    needs: "Dotnet Build job"
+    needs: Build
     name: Deploying To Webapp Service
     runs-on: windows-latest
 
