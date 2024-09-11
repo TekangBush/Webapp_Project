@@ -52,7 +52,7 @@ jobs:
            dotnet publish $ENV:GITHUB_WORKSPACE -c Debug -o "$ENV:GITHUB_WORKSPACE/SimpleWebAppMVC"
       - name: List published files
         run: |
-          Write-Host "Listing files in $ENV:GITHUB_WORKSPACE/SimpleWebAppMVC"
+          Write-Host "Listing files in '$ENV:GITHUB_WORKSPACE/SimpleWebAppMVC'"
           dir "$ENV:GITHUB_WORKSPACE/SimpleWebAppMVC"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
