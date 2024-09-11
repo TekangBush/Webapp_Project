@@ -35,6 +35,10 @@ jobs:
       - name: Publish build artifact
         run: |
            dotnet publish SimpleWebAppMVC/SimpleWebAppMVC.csproj -c Debug -o $env:DOTNET_ROOT/SimpleWebAppMVC
+      - name: List published files
+        run: |
+          Write-Host "Listing files in $env:DOTNET_ROOT/SimpleWebAppMVC"
+          dir $env:DOTNET_ROOT/SimpleWebAppMVC
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
