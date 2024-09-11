@@ -34,7 +34,7 @@ jobs:
           Write-Host "DOTNET_ROOT is $env:DOTNET_ROOT"
       - name: Publish build artifact
         run: |
-           dotnet publish SimpleWebAppMVC/SimpleWebAppMVC.csproj -c Debug -o ${{env.DOTNET_ROOT}}/SimpleWebAppMVC
+           dotnet publish SimpleWebAppMVC/SimpleWebAppMVC.csproj -c Debug -o "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
       - name: List published files
         run: |
           Write-Host "Listing files in ${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
