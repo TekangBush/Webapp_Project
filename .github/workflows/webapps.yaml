@@ -59,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
            name: drop
-           path: "$env:GITHUB_WORKSPACE/SimpleWebAppMVC"
+           path: "D:/a/Webapp_Project/Webapp_Project/SimpleWebAppMVC"
            if-no-files-found: error
       - name: End of Build stage
         run: |
