@@ -38,12 +38,12 @@ jobs:
       - name: List published files
         run: |
           Write-Host "Listing files in ${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
-          dir ${{env.DOTNET_ROOT}}/SimpleWebAppMVC
+          dir "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
            name: drop
-           path: $env:DOTNET_ROOT/SimpleWebAppMVC
+           path: "$env:DOTNET_ROOT/SimpleWebAppMVC"
       - name: End of Build stage
         run: |
           Write-Host "Artifact created"
