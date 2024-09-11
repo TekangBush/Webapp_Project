@@ -36,6 +36,8 @@ jobs:
         run: |
           Write-Host "DOTNET_ROOT is ${{env.DOTNET_ROOT}}"
           dir "${{env.DOTNET_ROOT}}"
+          Write-Host "GITHUB_WORKSPACE: $env:GITHUB_WORKSPACE"
+          dir "$env:GITHUB_WORKSPACE"
       - name: Publish build artifact
         run: |
            dotnet publish SimpleWebAppMVC/SimpleWebAppMVC.csproj -c Debug -o "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
