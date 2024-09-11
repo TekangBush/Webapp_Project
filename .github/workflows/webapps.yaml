@@ -23,7 +23,7 @@ jobs:
           Write-Host "setting up the environment now"
       - name: "Who is the github actor?"
         run: |
-          Write-Host "GITHUB_ACTOR IS : ${{env:GITHUB_ACTOR}}"
+          Write-Host "GITHUB_ACTOR IS : ${{env.GITHUB_ACTOR}}"
       # - name: Setup .NET
       #   uses: actions/setup-dotnet@v4
       #   with:
