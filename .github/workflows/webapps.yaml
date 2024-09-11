@@ -34,7 +34,8 @@ jobs:
         run: dotnet build --configuration Debug
       - name: Get what this ENV.DOTNET_ROOT
         run: |
-          Write-Host "DOTNET_ROOT is $env:DOTNET_ROOT"
+          Write-Host "DOTNET_ROOT is ${{env.DOTNET_ROOT}}"
+          dir "${{env.DOTNET_ROOT}}"
       - name: Publish build artifact
         run: |
            dotnet publish SimpleWebAppMVC/SimpleWebAppMVC.csproj -c Debug -o "${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
