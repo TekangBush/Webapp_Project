@@ -11,10 +11,13 @@ on:
   workflow_dispatch:
 env:
   DOTNET_ROOT: "."
+
 jobs:
   Build:
-    name: "build job"
+    name: "Dotnet Build job"
     runs-on: windows-latest
+    outputs:
+      cartArtifact: ${{steps.output_artifact.outputs.artifact-id}}
     steps:
       - name: "checkout step"
         uses: actions/checkout@v4
@@ -27,21 +30,21 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
           restore-keys: |
             ${{ runner.os }}-nuget-       
-      - name: "run an inline script"
+      - name: "Running inline script"
         run: |
           Write-Host "setting up the environment now"
-      - name: "Who is the github actor?"
+      - name: "GITHUB_ACTOR"
         run: |
           Write-Host "GITHUB_ACTOR IS : $env.GITHUB_ACTOR"
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 7.0.x
-      - name: Restore dependencies 
+      - name: Restore Dependencies 
         run: dotnet restore
-      - name: Build step"
+      - name: Build_STEP"
         run: dotnet build --configuration Debug
-      - name: Get what this ENV.DOTNET_ROOT
+      - name: Value of env.DOTNET_ROOT
         run: |
           Write-Host "DOTNET_ROOT is ${{env.DOTNET_ROOT}}"
           dir "${{env.DOTNET_ROOT}}"
@@ -64,5 +67,9 @@ jobs:
       - name: End of Build stage
         run: |
           Write-Host "Artifact created"
+  Deploy:
+    needs: "Dotnet Build job"
+    name: Deploying To Webapp Service
+    runs-on: windows-latest
 
           
