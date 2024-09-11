@@ -26,5 +26,7 @@ jobs:
       - name: Restore dependencies 
         run: dotnet restore
       - name: Build step"
-        run: dotnet build --no-restore
-        
+        run: dotnet build --configuration Debug
+      - name: Get what this ENV.DOTNET_ROOT
+        run: |
+          Write-Host "DOTNET_ROOT:{{ENV:DOTNET_ROOT}}"
