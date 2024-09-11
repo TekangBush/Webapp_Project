@@ -49,16 +49,16 @@ jobs:
           dir "$env:GITHUB_WORKSPACE"
       - name: Publish build artifact
         run: |
-           dotnet publish $ENV:GITHUB_WORKSPACE -c Debug -o "$ENV:GITHUB_WORKSPACE/SimpleWebAppMVC"
+           dotnet publish $ENV:GITHUB_WORKSPACE -c Debug -o "$env:GITHUB_WORKSPACE/SimpleWebAppMVC"
       - name: List published files
         run: |
-          Write-Host "Listing files in '$ENV:GITHUB_WORKSPACE/SimpleWebAppMVC'"
-          dir "$ENV:GITHUB_WORKSPACE/SimpleWebAppMVC"
+          Write-Host "Listing files in $env:GITHUB_WORKSPACE/SimpleWebAppMVC"
+          dir "$env:GITHUB_WORKSPACE/SimpleWebAppMVC"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
            name: drop
-           path: "$ENV:GITHUB_WORKSPACE/SimpleWebAppMVC"
+           path: "$env:GITHUB_WORKSPACE/SimpleWebAppMVC"
       - name: End of Build stage
         run: |
           Write-Host "Artifact created"
