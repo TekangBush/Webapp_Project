@@ -11,6 +11,7 @@ on:
   workflow_dispatch:
 env:
   DOTNET_ROOT: "."
+  AZURE_WEBAPP_NAME: 'testingdev'
 
 jobs:
   Build:
@@ -70,9 +71,24 @@ jobs:
   Deploy_To_Dev:
     needs: Build
     name: Deploying To Webapp Service
+    environment:
+      name: 'DEVELOPMENT'
+      url: 
     runs-on: windows-latest
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: drop
+  
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.TESTING_DEV_PUBLISH_PROFILE}}
+          package: drop
+
+
+
+
