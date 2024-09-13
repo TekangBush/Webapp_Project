@@ -74,7 +74,7 @@ jobs:
     name: Deploying To Webapp Service
     environment:
       name: 'DEVELOPMENT'
-      url: ${{steps.deploy-to-webapp.outputs.ebapp-uwrl}}
+      url: ${{steps.deploy-to-webapp.outputs.webapp-url}}
     runs-on: windows-latest
     steps:
       - name: Download artifact
