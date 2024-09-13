@@ -78,10 +78,11 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4    
         with:
           name: drop
-  
+      - name: IF-ARTIFACT
+        run: dir .
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
