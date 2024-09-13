@@ -90,7 +90,7 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.TESTING_DEV_PUBLISH_PROFILE}}
-          package: "D:/a/Webapp_Project/Webapp_Project"
+          package: .
 
 
 
