@@ -60,6 +60,12 @@ jobs:
         run: |
           Write-Host "Listing files in ${{env.DOTNET_ROOT}}/SimpleWebAppMVC"
           dir "$env:GITHUB_WORKSPACE/SimpleWebAppMVC"
+      - name: Value of env.DOTNET_ROOT AGAIN
+        run: |
+          Write-Host "DOTNET_ROOT is ${{env.DOTNET_ROOT}}"
+          dir "${{env.DOTNET_ROOT}}"
+          Write-Host "GITHUB_WORKSPACE: $env:GITHUB_WORKSPACE"
+          dir "$env:GITHUB_WORKSPACE"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         id: output_artifact
